@@ -2,20 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Author;
-use App\Models\Book;
+use App\Models\Publisher;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class AuthorSeeder extends Seeder
+class PublisherSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Author::factory(5)
-            ->has(Book::factory(rand(2,5)))
-            ->create();
+        Publisher::factory(5)->create();
     }
 }

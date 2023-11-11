@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->unsignedInteger('author_id');
-            $table->foreign('author_id')->references('id')->on('authors');
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -22,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('author_id');
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->dropColumn('user_id');
         });
     }
 };

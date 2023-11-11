@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Author;
+use App\Models\Publisher;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class BookFactory extends Factory
             'page_number' => rand(10, 300),
             'annotation' => fake()->realText(),
             'author_id' => Author::factory(),
+            'publisher_id' => Publisher::factory(),
         ];
     }
 }
