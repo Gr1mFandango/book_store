@@ -19,8 +19,7 @@ class AuthorFactory extends Factory
         return [
             'surname' => fake()->firstName(),
             'name' => fake()->name(),
-            'patronymic' => fake()->name(),
-            'photo' => fake()->imageUrl(),
+            'patronymic' => fake()->name()
         ];
     }
 }

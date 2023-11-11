@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/add', function () {
+    return view('addForm');
+})->name('addForm');
+
+Route::post('/add/submit', function () {
+    return "okey";
+})->name('book-form');
+
 Route::get('/hlo', function () {
     return 'Hello';
 });
