@@ -27,14 +27,14 @@ class Book extends Model
         'status' => BookStatus::class
     ];
 
-    public function author(): belongsTo
+    public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class);
     }
 
-    public function publisher(): HasOne
+    public function publisher(): BelongsTo
     {
-        return $this->hasOne(Publisher::class);
+        return $this->BelongsTo(Publisher::class);
     }
 
     public function images(): HasMany
