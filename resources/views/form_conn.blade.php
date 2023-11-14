@@ -30,25 +30,7 @@
             @endauth
         </div>
     @endif
-        <form action="{{route('db_conn')}}" method="post">
-            @csrf
-            <div class="form-group">
-                <label for="title">Название книги</label>
-                <input type="text" name="title" placeholder="Название" id="title" class="form-control">
-
-            </div>
-            <div class="form-group">
-                <label for="page_number">Количество страниц</label>
-                <input type="text" name="page_number" placeholder="кол-во страниц" id="page_number" class="form-control">
-
-            </div>
-            <div class="form-group">
-                <label for="annotation">Аннотация</label>
-                <textarea name="annotation" id="annotation" cols="30" rows="10" class="form-control" placeholder="Введите аннотацию"></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-success">Добавить</button>
-        </form>
+dfgdfg
 
 
 </div>

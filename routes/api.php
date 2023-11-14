@@ -22,5 +22,9 @@ Route::controller(BookController::class)->prefix('/books')->group(function () {
     Route::put('/{book}', 'update')->name('books.update');
     Route::patch('/{book}', 'update')->name('books.update');
 
+    Route::post('/', 'save')->name('db_conn');
+
+    Route::post('/{book}/review', 'reviewStore')->name('review.store');
+
     // web
 });

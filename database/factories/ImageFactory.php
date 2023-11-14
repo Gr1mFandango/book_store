@@ -18,8 +18,7 @@ class ImageFactory extends Factory
     public function definition(): array
     {
         return [
-            'url' => fake()->url(),
-            'book_id' => Book::factory()
+            'url' => fake()->imageUrl()
         ];
     }
 }

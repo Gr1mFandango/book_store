@@ -19,10 +19,9 @@ class ReviewFactory extends Factory
     public function definition(): array
     {
         return [
-            'text' => fake()->sentence(rand(1, 3)),
-            'rate' => rand(0, 10),
-            'book_id' => Book::factory(),
-            'user_id' => User::factory(),
+            'text' => fake()->sentences(),
+            'rate' => fake()->numberBetween(1,5),
+            'user_id' => User::factory()
         ];
     }
 }

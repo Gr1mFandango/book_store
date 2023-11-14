@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Book;
+use App\Models\Image;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,8 @@ class BookSeeder extends Seeder
      */
     public function run(): void
     {
-        Book::factory(5)->create();
+        Book::factory(5)
+            ->has(Image::factory(rand(1,3)))
+            ->create();
     }
 }

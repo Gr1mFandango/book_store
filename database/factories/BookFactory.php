@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\BookStatus;
 use App\Models\Author;
 use App\Models\Publisher;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -24,6 +25,7 @@ class BookFactory extends Factory
             'annotation' => fake()->realText(),
             'author_id' => Author::factory(),
             'publisher_id' => Publisher::factory(),
+            'status'=>fake()->randomElement([BookStatus::Draft, BookStatus::Published])
         ];
     }
 }
