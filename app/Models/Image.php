@@ -7,16 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
+/**
+ * @property string $url
+ * @property int $id
+ */
 class Image extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'url',
+        'url'
     ];
 
-//    public function book(): BelongsTo
-//    {
-//        return $this->belongsTo(Book::class);
-//    }
+    public function book(): BelongsTo
+    {
+        return $this->belongsTo(Book::class);
+    }
 }

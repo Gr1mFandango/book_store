@@ -15,7 +15,7 @@ class BookSeeder extends Seeder
     public function run(): void
     {
         Book::factory(5)
-            ->has(Image::factory(rand(1,3)))
+            ->has(Image::factory(rand(1, 3)))
             ->create();
     }
 }

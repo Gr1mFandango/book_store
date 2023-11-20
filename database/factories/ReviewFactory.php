@@ -19,7 +19,7 @@ class ReviewFactory extends Factory
     public function definition(): array
     {
         return [
-            'text' => fake()->sentences(),
+            'text' => fake()->sentence(),
             'rate' => fake()->numberBetween(1,5)
         ];
     }
