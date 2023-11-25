@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,4 +27,8 @@ Route::controller(BookController::class)->prefix('/books')->group(function () {
     Route::post('/{book}/review', 'reviewStore')->name('review.store');
 
     // web
+});
+
+Route::controller(UserController::class)->prefix()->group(function () {
+    Route::post('/login', 'login');
 });
