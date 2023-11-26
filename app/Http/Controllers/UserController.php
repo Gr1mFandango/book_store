@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -12,8 +13,17 @@ class UserController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        Auth::attempt([]);
+        if (!Auth::attempt(['email' => $email, 'password' => $password])) {
+            return response()->json([
+                'message' => 'Invalid username or password'
+            ], 401);
+        }
 
-        return 'aaa';
+        $token = Str::random(32);
+
+        $user = auth()->user();
+        $user->update(['api_token' => $token]);
+
+        return ['token' => $token];
     }
 }

@@ -29,6 +29,6 @@ Route::controller(BookController::class)->prefix('/books')->group(function () {
     // web
 });
 
-Route::controller(UserController::class)->prefix()->group(function () {
-    Route::post('/login', 'login');
+Route::controller(UserController::class)->group(function () {
+    Route::post('/login', 'login')->name('login');
 });

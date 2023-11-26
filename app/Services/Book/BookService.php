@@ -3,7 +3,6 @@
 namespace App\Services\Book;
 
 use App\Enums\BookStatus;
-use App\Http\Requests\Book\StoreBookRequest;
 use App\Http\Requests\Book\StoreReviewRequest;
 use App\Models\Book;
 use App\Models\Review;
