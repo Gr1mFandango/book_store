@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\Web\AuthorController;
+use App\Http\Controllers\Web\BookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,54 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
-Route::get('/add', function () {
-    return view('addForm');
-})->name('addForm');
-
-
-Route::options('/')->name('home');
-
-Route::match(['get', 'post'], '/match');
-
-Route::any('/any');
-
-// Внедрение зависимости
-
-
-
-// Перенаправление
-
-Route::redirect('/from', '/to', 301);
-
-
-// Представления
-
-Route::view('/not-found', 'not-found');
-
-// Параметры
-
-//Route::get('/books/{id}', function ($id) {
-//    return 'Книга #' . $id;
-//});
-
-Route::get('/books/{book}/comment/{comment}', function ($bookId, $commentId) {
-
-});
-
-//Route::get('/books/{id}', function (Request $request, $id) {
-//    return 'Книга #' . $id;
-//})->name('book.id');
-//
-//Route::get('/books/{?id}', function ($id) {
-//    return 'Книга #' . $id;
-//});
-
 Route::controller(BookController::class)->prefix('/books')->group(function () {
     Route::get('/', 'index')->name('books.index');
-    Route::get('/{id}', 'show')->name('book');
+    Route::get('/create', 'create')->name('books.create');
+    Route::post('/', 'store')->name('books.store');
+    Route::get('/{book}', 'show')->name('books.show');
 });
 
+Route::controller(AuthorController::class)->prefix('/authors')->group(function () {
+    Route::get('/create', 'create')->name('authors.create');
+    Route::post('/', 'store')->name('authors.store');
+});

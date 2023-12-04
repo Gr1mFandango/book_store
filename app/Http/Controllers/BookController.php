@@ -19,7 +19,7 @@ class BookController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['store', 'update', 'reviewStore']);
+        $this->middleware('auth:sanctum')->only(['store', 'update', 'review']);
     }
 
     // @route /books
@@ -36,17 +36,6 @@ class BookController extends Controller
         return new BookResource($book);
     }
 
-    public function save(): Book
-    {
-        $bookToSave = New Book([
-            'title'=>request()->input('title'),
-            'page_number'=>request()->integer('page_number'),
-            'annotation'=>request()->input('annotation'),
-        ]);
-        $bookToSave->save();
-        return $bookToSave;
-    }
-
     public function store(StoreBookRequest $request): JsonResponse
     {
         $book = BookFacade::store(
@@ -55,7 +44,7 @@ class BookController extends Controller
 
         return response()->json(new BookResource($book), 201);
     }
-    public function reviewStore(Book $book, StoreReviewRequest $request): ReviewResource
+    public function review(Book $book, StoreReviewRequest $request): ReviewResource
     {
         return new ReviewResource(
             BookFacade::setBook($book)->createReview($request)

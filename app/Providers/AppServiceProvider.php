@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Author\AuthorService;
 use App\Services\Book\BookService;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind('book', BookService::class);
+        $this->app->bind('author', AuthorService::class);
     }
 
     /**

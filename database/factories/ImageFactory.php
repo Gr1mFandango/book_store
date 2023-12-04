@@ -18,7 +18,8 @@ class ImageFactory extends Factory
     public function definition(): array
     {
         return [
-            'url' => fake()->imageUrl()
+            'url' => 'https://dummyimage.com/240x320/' .
+                str_replace('#', '', fake()->hexColor),
         ];
     }
 }

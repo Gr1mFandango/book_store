@@ -32,7 +32,7 @@ class Book extends Model
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(Author::class);
+        return $this->BelongsTo(Author::class);
     }
 
     public function publisher(): BelongsTo
@@ -42,11 +42,11 @@ class Book extends Model
 
     public function images(): HasMany
     {
-        return $this->hasMany(Image::class);
+        return $this->HasMany(Image::class);
     }
 
     public function reviews(): HasMany
     {
-        return $this->hasMany(Review::class);
+        return $this->HasMany(Review::class);
     }
 }

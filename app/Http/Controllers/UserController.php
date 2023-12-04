@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Laravel\Sanctum\NewAccessToken;
 
 class UserController extends Controller
 {
@@ -13,17 +14,20 @@ class UserController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
 
-        if (!Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (!Auth::guard('web')->attempt(['email' => $email, 'password' => $password])) {
             return response()->json([
                 'message' => 'Invalid username or password'
             ], 401);
         }
 
-        $token = Str::random(32);
 
-        $user = auth()->user();
-        $user->update(['api_token' => $token]);
 
-        return ['token' => $token];
+        $user = Auth::guard('web')->user();
+        /**
+         * @var NewAccessToken $token
+         */
+        $token = $user->createToken('login');
+
+        return ['token' => $token->plainTextToken];
     }
 }

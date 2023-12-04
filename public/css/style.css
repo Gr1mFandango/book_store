@@ -1,0 +1,43 @@
+html, body {
+}
+
+body > header {
+    background-color: lavender;
+    padding: 2rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.main {
+    width: 1620px;
+    margin: 0 auto;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book {
+    padding: .5rem;
+    margin: 1rem .3rem;
+    width: 240px;
+}
+
+.author {
+    font-weight: bold;
+}
+
+.annotation {
+    text-align: justify;
+}
+
+.publisher {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.book img {
+    width: 240px;
+    height: 320px;
+}

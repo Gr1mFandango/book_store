@@ -20,11 +20,9 @@ Route::controller(BookController::class)->prefix('/books')->group(function () {
     Route::get('/{book}', 'show')->name('book');
     Route::post('/', 'store')->name('books.store');
     Route::put('/{book}', 'update')->name('books.update');
-    Route::patch('/{book}', 'update')->name('books.update');
+    Route::patch('/{book}', 'update')->name('book.update');
 
-    Route::post('/', 'save')->name('db_conn');
-
-    Route::post('/{book}/review', 'reviewStore')->name('review.store');
+    Route::post('/{book}/review', 'review')->name('review.store');
 
     // web
 });

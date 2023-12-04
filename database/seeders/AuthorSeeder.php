@@ -7,7 +7,6 @@ use App\Models\Book;
 use App\Models\Image;
 use App\Models\Review;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AuthorSeeder extends Seeder
