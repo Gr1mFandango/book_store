@@ -4,16 +4,11 @@
     <form action="{{ route('books.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
-        <x-input :label="'Название книги'" :name="'title'" />
+        <x-input :label="'Название книги'" :type="'text'" :name="'title'" />
 
-        <div>
-            <label>
-                Обложка<br>
-                <input type="file" name="images[]" multiple>
-            </label>
-        </div>
+        <x-input :label="'Обложка'" :type="'file'" :name="'images[]'" :parameter="'multiple'" />
 
-        <x-input :label="'Количество страниц'" :name="'page_number'" />
+        <x-input :label="'Количество страниц'" :type="'text'" :name="'page_number'" />
 
         <div>
             <label>

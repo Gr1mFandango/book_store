@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Services\Author\CreateAuthorData;
-use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAuthorRequest extends FormRequest
+class StoreAuthorRequest extends AbstractRequest
 {
 
     public function rules(): array

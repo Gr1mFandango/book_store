@@ -10,6 +10,10 @@ use Illuminate\View\View;
 
 class AuthorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['store', 'create']);
+    }
     public function create(): View
     {
         return view('authors.create');

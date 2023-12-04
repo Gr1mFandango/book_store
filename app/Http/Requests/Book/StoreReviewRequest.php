@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\Book;
 
-use App\Http\Requests\ApiRequest;
+use App\Http\Requests\AbstractRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreReviewRequest extends ApiRequest
+class StoreReviewRequest extends AbstractRequest
 {
     public function rules(): array
     {

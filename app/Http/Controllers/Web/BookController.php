@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Facades\AuthorFacade;
 use App\Facades\BookFacade;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreBookRequest;
+use App\Http\Requests\Book\StoreBookRequest;
 use App\Models\Book;
 use App\Models\Publisher;
 use Illuminate\Http\RedirectResponse;
@@ -13,6 +13,10 @@ use Illuminate\View\View;
 
 class BookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['store', 'create']);
+    }
     public function index(): View
     {
         $books = BookFacade::getPublishedBooks();

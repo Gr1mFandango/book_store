@@ -13,7 +13,9 @@ class input extends Component
      */
     public function __construct(
         public string $label,
-        public string $name
+        public string $name,
+        public string $type,
+        public string $parameter = '',
     )
     {
         //

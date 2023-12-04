@@ -1,6 +1,6 @@
 <div>
     <label>
         {{ $label }}<br>
-        <input type="text" name="{{ $name }}">
+        <input type="{{ $type }}" name="{{ $name }}" {{ $parameter }}>
     </label>
 </div>
