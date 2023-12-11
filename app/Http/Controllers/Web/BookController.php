@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Enums\BookStatus;
 use App\Facades\AuthorFacade;
 use App\Facades\BookFacade;
+use App\Facades\PublisherFacade;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Book\StoreBookRequest;
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\Publisher;
 use Illuminate\Http\RedirectResponse;
@@ -31,10 +34,36 @@ class BookController extends Controller
 
     public function create(): View
     {
-        $authors = AuthorFacade::getAuthors();
-        $publishers = Publisher::query()->get();
+        $authors = Author::query()->get()->map(function ($author) {
+            return [
+                'key' => $author->id,
+                'value' => "$author->name $author->surname"
+            ];
+        })->toArray();
 
-        return view('books.create', ['authors' => $authors, 'publishers' => $publishers]);
+        $publishers = Publisher::query()->get()->map(function ($publisher) {
+            return [
+                'key' => $publisher->id,
+                'value' => "$publisher->name"
+            ];
+        })->toArray();
+
+        $statusList = [
+            [
+                'key' => BookStatus::Published->value,
+                'value' => 'Опубликована'
+            ],
+            [
+                'key' => BookStatus::Draft->value,
+                'value' => 'Черновик'
+            ],
+        ];
+
+        return view('books.create', [
+            'authors' => $authors,
+            'publishers' => $publishers,
+            'statusList' => $statusList,
+        ]);
     }
 
     public function store(StoreBookRequest $request): RedirectResponse

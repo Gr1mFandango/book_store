@@ -8,9 +8,17 @@ use Illuminate\Database\Eloquent\Collection;
 class AuthorService
 {
     private Author $author;
-    public  function getAuthors(): Collection
+    public  function getAuthorList(): array
     {
-        return Author::query()->get();
+        $authors = Author::query()->get();
+
+        $authorList = [];
+
+        foreach ($authors as $author) {
+            $authorList[$author->id] = "$author->name $author->name";
+        }
+
+        return $authorList;
     }
 
     public function store(CreateAuthorData $data): Author

@@ -4,23 +4,20 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\View\Component;
 
-class inputSelect extends Component
+class InputTextarea extends Component
 {
-    /**
-     * Create a new component instance.
-     */
+    public bool $isInvalid = false;
     public function __construct(
-        public string $label,
         public string $name,
+        public string $label,
         public string $id,
-        public array $options = [],
-        public string|null $value = ''
+        public string | null $value = '',
+        public array $errors = [],
     )
     {
-        //
+        $this->isInvalid = !empty($this->errors);
     }
 
     /**
@@ -28,6 +25,6 @@ class inputSelect extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.input-select');
+        return view('components.input-textarea');
     }
 }

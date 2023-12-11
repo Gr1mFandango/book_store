@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static Collection getAuthors()
+ * @method static array getAuthorList()
  * @method static Author store(CreateAuthorData $data)
  */
 class AuthorFacade extends Facade

@@ -4,50 +4,67 @@
     <form action="{{ route('books.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
-        <x-input :label="'Название книги'" :type="'text'" :name="'title'" />
+        <x-input
+            :label="__('validation.attributes.book.title')"
+            :type="'text'"
+            :name="'title'"
+            :id="'title'"
+            :errors="$errors->get('title')"
+            :value="old('title')"
+        />
+        <x-input
+            :label="'Обложка'"
+            :type="'file'"
+            :name="'images[]'"
+            :id="'images'"
+            :multiple="true"
+            :errors="$errors->get('images')"
+            :value="old('images')"
+        />
+        <x-input
+            :label="__('validation.attributes.book.page_number')"
+            :type="'text'"
+            :name="'page_number'"
+            :id="'page_number'"
+            :errors="$errors->get('page_number')"
+            :value="old('page_number')"
+        />
 
-        <x-input :label="'Обложка'" :type="'file'" :name="'images[]'" :parameter="'multiple'" />
+        <x-input-textarea
+            :label="__('validation.attributes.book.annotation')"
+            :name="'annotation'"
+            :id="'annotation'"
+            :errors="$errors->get('annotation')"
+            :value="old('annotation')"
+        />
 
-        <x-input :label="'Количество страниц'" :type="'text'" :name="'page_number'" />
+        <x-input-select
+            :name="'status'"
+            :id="'status'"
+            :label="'Статус'"
+            :options="$statusList"
+            :value="old('status')"
+        />
 
-        <div>
-            <label>
-                Описание<br>
-                <textarea name="annotation"></textarea>
-            </label>
-        </div>
-        <div>
-            <label>
-                Автор<br>
-                <select name="author_id">
-                    @foreach($authors as $author)
-                        <option value="{{ $author->id }}">{{ $author->name }} {{ $author->surname }}</option>
-                    @endforeach
-                </select>
-            </label>
-        </div>
-        <div>
-            <label>
-                Издатель<br>
-                <select name="publisher_id">
-                    @foreach($publishers as $publisher)
-                        <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
-                    @endforeach
-                </select>
-            </label>
-        </div>
-        <div>
-            <label>
-                Статус<br>
-                <select name="status">
-                    <option value="{{ \App\Enums\BookStatus::Published }}">Опубликована</option>
-                    <option value="{{ \App\Enums\BookStatus::Draft }}">Черновик</option>
-                </select>
-            </label>
-        </div>
+        <x-input-select
+            :name="'author_id'"
+            :id="'author_id'"
+            :label="'Автор'"
+            :options="$authors"
+            :value="old('author_id')"
+        />
+
+        <x-input-select
+            :name="'publisher_id'"
+            :id="'publisher_id'"
+            :label="'Издатель'"
+            :options="$publishers"
+            :value="old('publisher_id')"
+        />
+
         <div>
             <br>
-            <button>Сохранить</button>
+            <button class="btn btn-primary">{{ __('messages.save') }}</button>
         </div>
     </form>
 @endsection

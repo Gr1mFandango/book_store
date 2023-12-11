@@ -9,38 +9,38 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Книги</a>
+                    <a class="nav-link" href="{{ route('home') }}">{{ __('messages.books') }}</a>
                 </li>
 
                 @auth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Добавление
+                        {{ __('messages.adds') }}
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('books.create') }}">Добавить книгу</a></li>
-                        <li><a class="dropdown-item" href="{{ route('authors.create') }}">Добавить автора</a></li>
+                        <li><a class="dropdown-item" href="{{ route('books.create') }}">{{ __('messages.add_book') }}</a></li>
+                        <li><a class="dropdown-item" href="{{ route('authors.create') }}">{{ __('messages.add_author') }}</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Написать рецензию</a></li>
+                        <li><a class="dropdown-item" href="#">{{ __('messages.write_a_review') }}</a></li>
                     </ul>
                 </li>
                 @endauth
 
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.login') }}">Вход</a>
+                    <a class="nav-link" href="{{ route('user.login') }}">{{ __('messages.login') }}</a>
                 </li>
                 @endguest
 
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.logout') }}">Выход</a>
+                    <a class="nav-link" href="{{ route('user.logout') }}">{{ __('messages.logout') }}</a>
                 </li>
                 @endauth
             </ul>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="{{ __('messages.search') }}" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">{{ __('messages.search') }}</button>
             </form>
         </div>
     </div>

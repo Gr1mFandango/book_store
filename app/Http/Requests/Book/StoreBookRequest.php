@@ -17,8 +17,17 @@ class StoreBookRequest extends AbstractRequest
             'annotation' => ['string'],
             'author_id' => ['required'],
             'publisher_id' => ['required'],
-            'status' => new Enum(BookStatus::class),
+            'status' => new Enum(BookStatus::class), ['required'],
             'images.*' => ['image'],
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'title' => __('validation.attributes.book.title'),
+            'page_number' => __('validation.attributes.book.page_number'),
+            'annotation' => __('validation.attributes.book.annotation')
         ];
     }
 

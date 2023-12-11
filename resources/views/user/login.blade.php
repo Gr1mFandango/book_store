@@ -4,10 +4,10 @@
     <form action="{{ route('user.auth') }}" method="post">
         @csrf
 
-        <x-input :label="'Адрес электронной почты:'" :type="'text'" :name="'email'"/>
+        <x-input :label="'Адрес электронной почты:'" :type="'text'" :name="'email'" :id="'email'"/>
 
-        <x-input :label="'Пароль:'" :type="'password'" :name="'password'"/>
+        <x-input :label="'Пароль:'" :type="'password'" :name="'password'" :id="'password'"/>
 
-        <button>Login</button>
+        <button>Войти</button>
     </form>
 @endsection
