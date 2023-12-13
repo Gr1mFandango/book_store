@@ -11,6 +11,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">{{ __('messages.books') }}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('authors.index') }}">Авторы</a>
+                </li>
 
                 @auth
                 <li class="nav-item dropdown">
@@ -28,15 +31,23 @@
 
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.login') }}">{{ __('messages.login') }}</a>
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">{{ __('messages.login') }}</a>
                 </li>
                 @endguest
+
+                @include('user.login')
 
                 @auth
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.logout') }}">{{ __('messages.logout') }}</a>
                 </li>
                 @endauth
+
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.register') }}">Регистрация</a>
+                    </li>
+                @endguest
             </ul>
             <form class="d-flex" action="{{ route('books.search') }}" role="search">
                 <input
@@ -52,3 +63,5 @@
         </div>
     </div>
 </nav>
+
+

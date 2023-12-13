@@ -31,4 +31,17 @@ class UserController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function register(): View
+    {
+        return view('user.register');
+    }
+    public function store()
+    {
+//        $author = AuthorFacade::store(
+//            $request->data()
+//        );
+
+        return redirect()->route('books.index');
+    }
 }

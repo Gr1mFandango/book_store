@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static array getAuthorList()
+ * @method static Collection getAuthors()
  * @method static Author store(CreateAuthorData $data)
  */
 class AuthorFacade extends Facade

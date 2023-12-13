@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\ReviewController;
 use App\Http\Controllers\Web\UserController;
 use App\Http\Controllers\Web\AuthorController;
 use App\Http\Controllers\Web\BookController;
@@ -28,12 +29,21 @@ Route::controller(BookController::class)->prefix('/books')->group(function () {
 });
 
 Route::controller(AuthorController::class)->prefix('/authors')->group(function () {
+    Route::get('/', 'index')->name('authors.index');
     Route::get('/create', 'create')->name('authors.create');
     Route::post('/', 'store')->name('authors.store');
+    Route::get('/{author}', 'show')->name('authors.show');
 });
 
 Route::controller(UserController::class)->prefix('/user')->group(function () {
     Route::get('/login', 'login')->name('user.login');
     Route::get('/logout', 'logout')->name('user.logout');
     Route::post('/auth', 'auth')->name('user.auth');
+    Route::get('/register', 'register')->name('user.register');
+    Route::post('/store', 'store')->name('user.store');
+});
+
+Route::controller(ReviewController::class)->prefix('/review')->group(function () {
+    Route::get('/create', 'create')->name('review.create');
+    Route::post('/store', 'store')->name('review.store');
 });

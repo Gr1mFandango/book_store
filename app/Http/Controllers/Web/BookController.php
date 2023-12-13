@@ -76,7 +76,7 @@ class BookController extends Controller
         return redirect()->route('books.show', ['book' => $book->id]);
     }
 
-    public function search(Request $request)
+    public function search(Request $request): View
     {
         $books = Book::query()
             ->where('title', 'like', "%$request->q%")
