@@ -101,8 +101,11 @@ class BookController extends Controller
             })
         ;
 
-        $query->orderBy('title','asc');
+        $page = $query->paginate(5);
 
-        return view('books.index', ['books' => $query->get()]);
+        return view('books.index', [
+            'books' => $query->get(),
+            'page' => 'aaaa',
+        ]);
     }
 }
